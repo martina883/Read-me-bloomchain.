@@ -1,0 +1,214 @@
+# Documentación Técnica — BloomChain 🌸🔗
+
+---
+
+# 1. Descripción General
+
+BloomChain es un sistema hidropónico inteligente que combina tecnología IoT y blockchain para optimizar el cultivo urbano sostenible. El sistema utiliza macetas horizontales hidropónicas conectadas a sensores inteligentes que recopilan información ambiental en tiempo real.
+
+Todos los datos obtenidos se almacenan mediante tecnología blockchain, permitiendo trazabilidad, transparencia y monitoreo seguro del cultivo.
+
+---
+
+# 2. Objetivo del Sistema
+
+El objetivo principal de BloomChain es:
+
+* Reducir el consumo de agua.
+* Facilitar agricultura urbana.
+* Automatizar monitoreo de cultivos.
+* Garantizar trazabilidad mediante blockchain.
+* Crear un sistema moderno, ecológico y accesible.
+
+---
+
+# 3. Arquitectura General
+
+## Componentes principales
+
+### Hardware
+
+* ESP32 / Arduino
+* Sensores de:
+
+  * Temperatura
+  * Humedad
+  * pH
+  * Nutrientes
+* Sistema de riego automatizado
+* Macetas hidropónicas horizontales
+
+### Software
+
+* Backend Node.js
+* Frontend HTML/CSS/JavaScript
+* Dashboard en tiempo real
+* APIs REST
+
+### Blockchain
+
+* Registro de datos
+* Validación de lecturas
+* Trazabilidad digital
+
+---
+
+# 4. Flujo del Sistema
+
+## Paso 1 — Captura de datos
+
+Los sensores recopilan información del cultivo cada ciertos minutos.
+
+## Paso 2 — Procesamiento
+
+El ESP32 envía los datos al servidor mediante conexión WiFi.
+
+## Paso 3 — Almacenamiento
+
+El backend recibe y almacena la información.
+
+## Paso 4 — Blockchain
+
+Se genera un hash único para registrar los datos del cultivo.
+
+## Paso 5 — Visualización
+
+El usuario puede observar toda la información desde el dashboard web.
+
+---
+
+# 5. Tecnologías Utilizadas
+
+| Tecnología | Función               |
+| ---------- | --------------------- |
+| Node.js    | Backend del sistema   |
+| Express    | API y servidor        |
+| HTML/CSS   | Interfaz visual       |
+| JavaScript | Lógica del sistema    |
+| ESP32      | Controlador IoT       |
+| Blockchain | Registro seguro       |
+| APIs REST  | Comunicación de datos |
+
+---
+
+# 6. Estructura del MVP
+
+```bash
+BloomChain/
+│
+├── server.js
+├── sensores/
+├── dashboard/
+├── blockchain/
+└── README.md
+```
+
+---
+
+# 7. API Principal
+
+## Obtener datos de sensores
+
+### Endpoint
+
+```bash
+GET /api/sensores
+```
+
+### Respuesta JSON
+
+```json
+[
+  {
+    "temperatura": 25.4,
+    "humedad": 68,
+    "ph": 6.2,
+    "nutrientes": 85
+  }
+]
+```
+
+---
+
+# 8. Funcionamiento Blockchain
+
+BloomChain utiliza blockchain para:
+
+* Evitar modificación de datos.
+* Garantizar transparencia.
+* Crear trazabilidad de cada planta.
+* Registrar historial de crecimiento.
+
+Cada lectura genera:
+
+* Timestamp
+* Hash único
+* Registro digital
+
+---
+
+# 9. Seguridad
+
+El sistema incorpora:
+
+* Validación de datos
+* Registros inmutables
+* Protección de trazabilidad
+* Comunicación segura entre dispositivos
+
+---
+
+# 10. Dashboard Web
+
+El dashboard permite visualizar:
+
+* Temperatura
+* Humedad
+* pH
+* Nutrientes
+* Estado del sistema
+* Historial de cultivos
+
+Características:
+
+* Actualización en tiempo real
+* Diseño minimalista futurista
+* Interfaz intuitiva
+
+---
+
+# 11. Escalabilidad
+
+BloomChain puede ampliarse para:
+
+* Invernaderos inteligentes
+* Agricultura industrial
+* Escuelas y universidades
+* Restaurantes urbanos
+* Smart cities
+
+---
+
+# 12. Futuras Mejoras
+
+* Inteligencia artificial predictiva
+* Aplicación móvil
+* Alertas automáticas
+* NFT para certificación de cultivos
+* Integración completa con Polygon/Ethereum
+* Automatización avanzada de nutrientes
+
+---
+
+# 13. Integrantes
+
+* Martina Peñaherrera — Gerente General
+* Ariadne Rivera — Investigadora
+* Danae Delgado — Diseñadora
+* Mae Riera — Expositora
+
+---
+
+# 14. Slogan
+
+## “Cultivando el futuro, brote a brote.” 🌸
