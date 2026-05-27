@@ -1,0 +1,286 @@
+// ==========================================
+// BLOOMCHAIN 🌸🔗
+// MVP COMPLETO — CÓDIGO FUENTE ÚNICO
+// ==========================================
+// ---------- IMPORTACIONES ----------
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+// ==========================================
+// SIMULACIÓN DE SENSORES IoT
+// ==========================================
+
+let sensores = [];
+
+function generarDatos() {
+    return {
+        temperatura: (20 + Math.random() * 8).toFixed(1),
+        humedad: (55 + Math.random() * 25).toFixed(1),
+        ph: (5 + Math.random() * 2).toFixed(1),
+        nutrientes: (70 + Math.random() * 20).toFixed(1),
+        fecha: new Date().toLocaleString()
+    };
+}
+
+// Genera nuevas lecturas cada 8 segundos
+setInterval(() => {
+
+    const lectura = generarDatos();
+
+    sensores.push(lectura);
+
+    console.log("Nueva lectura registrada 🌱");
+    console.log(lectura);
+
+    // Simulación blockchain
+    console.log("Hash guardado en blockchain 🔗");
+
+}, 8000);
+
+// ==========================================
+// API
+// ==========================================
+
+app.get('/api/sensores', (req, res) => {
+    res.json(sensores);
+});
+
+// ==========================================
+// FRONTEND
+// ==========================================
+
+app.get('/', (req, res) => {
+
+    res.send(`
+
+    <!DOCTYPE html>
+
+    <html lang="es">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>BloomChain</title>
+
+        <style>
+
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+            }
+
+            body{
+                font-family: Arial, sans-serif;
+                background: linear-gradient(135deg,#fff0f5,#ffe4ee);
+                min-height:100vh;
+                color:#333;
+            }
+
+            header{
+                padding:50px;
+                text-align:center;
+            }
+
+            .logo{
+                font-size:70px;
+            }
+
+            h1{
+                color:#ff4fa3;
+                font-size:55px;
+            }
+
+            .slogan{
+                margin-top:10px;
+                color:#777;
+                font-size:22px;
+            }
+
+            .equipo{
+                margin-top:20px;
+                color:#666;
+            }
+
+            .dashboard{
+                width:90%;
+                margin:auto;
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+                gap:25px;
+                padding-bottom:50px;
+            }
+
+            .card{
+                background:white;
+                border-radius:25px;
+                padding:25px;
+                box-shadow:0 6px 20px rgba(0,0,0,0.1);
+                transition:0.3s;
+            }
+
+            .card:hover{
+                transform:translateY(-5px);
+            }
+
+            .card h2{
+                color:#ff4fa3;
+                margin-bottom:15px;
+            }
+
+            .dato{
+                margin:10px 0;
+                font-size:18px;
+            }
+
+            .info{
+                width:90%;
+                margin:auto;
+                margin-bottom:40px;
+                background:white;
+                padding:30px;
+                border-radius:25px;
+                box-shadow:0 6px 20px rgba(0,0,0,0.1);
+            }
+
+            .info h3{
+                color:#ff4fa3;
+                margin-bottom:15px;
+            }
+
+            footer{
+                text-align:center;
+                padding:30px;
+                color:#777;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <div class="logo">🌸🔗</div>
+
+            <h1>BloomChain</h1>
+
+            <p class="slogan">
+                Cultivando el futuro, brote a brote.
+            </p>
+
+            <div class="equipo">
+                Martina Peñaherrera • Ariadne Rivera • Danae Delgado • Mae Riera
+            </div>
+
+        </header>
+
+        <section class="info">
+
+            <h3>¿Qué es BloomChain?</h3>
+
+            <p>
+                BloomChain es un sistema hidropónico inteligente
+                que combina sensores IoT y blockchain para cultivar
+                plantas en espacios urbanos utilizando menos agua
+                y ofreciendo monitoreo en tiempo real.
+            </p>
+
+        </section>
+
+        <section class="dashboard" id="dashboard">
+
+        </section>
+
+        <footer>
+            Sistema Hidropónico Inteligente con Blockchain 🌱
+        </footer>
+
+        <script>
+
+            async function cargarDatos(){
+
+                const response = await fetch('/api/sensores');
+
+                const data = await response.json();
+
+                const dashboard = document.getElementById('dashboard');
+
+                dashboard.innerHTML = '';
+
+                data.reverse().forEach((sensor,index)=>{
+
+                    dashboard.innerHTML += \`
+
+                        <div class="card">
+
+                            <h2>Maceta \${index + 1}</h2>
+
+                            <div class="dato">
+                                🌡 Temperatura:
+                                \${sensor.temperatura} °C
+                            </div>
+
+                            <div class="dato">
+                                💧 Humedad:
+                                \${sensor.humedad} %
+                            </div>
+
+                            <div class="dato">
+                                🧪 pH:
+                                \${sensor.ph}
+                            </div>
+
+                            <div class="dato">
+                                🌱 Nutrientes:
+                                \${sensor.nutrientes} %
+                            </div>
+
+                            <div class="dato">
+                                ⏰ \${sensor.fecha}
+                            </div>
+
+                        </div>
+
+                    \`;
+
+                });
+
+            }
+
+            cargarDatos();
+
+            setInterval(cargarDatos,5000);
+
+        </script>
+
+    </body>
+
+    </html>
+
+    `);
+
+});
+
+// ==========================================
+// SERVIDOR
+// ==========================================
+
+app.listen(3000, () => {
+
+    console.log('');
+    console.log('🌸 BLOOMCHAIN FUNCIONANDO 🌸');
+    console.log('Abrir en: http://localhost:3000');
+    console.log('');
+
+});
+```
